@@ -35,7 +35,7 @@ class Signup extends Component {
       <Container>
         <Row>
           <Col md="4">
-          <h1>Signup</h1>
+          <h1>Sign up</h1>
           <Form>
             <Form.Group controlId="usernameId">
               <Form.Label>User name</Form.Label>
