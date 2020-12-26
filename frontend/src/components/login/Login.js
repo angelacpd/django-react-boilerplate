@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import { 
   Container,
@@ -6,7 +9,9 @@ import {
   Row,
   Col,
   Form,
-  FormControl } from "react-bootstrap";
+} from "react-bootstrap";
+
+import { login } from "./LoginActions.js";
 
 class Login extends Component {
   constructor(props){
@@ -25,7 +30,7 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    console.log("Login " + userData.username + " " + userData.password);
+    this.props.login(userData, "/dashboard");
   };
 
   render() {
@@ -44,7 +49,7 @@ class Login extends Component {
                 value={this.state.username}
                 onChange={this.onChange}
               />
-              <FormControl.Feedback type="invalid"></FormControl.Feedback>
+              {/* <FormControl.Feedback type="invalid"></FormControl.Feedback> */}
             </Form.Group>
 
             <Form.Group controlId="passwordId">
@@ -56,7 +61,7 @@ class Login extends Component {
                 value={this.state.password}
                 onChange={this.onChange}
               />
-              <FormControl.Feedback type="invalid"></FormControl.Feedback>
+              {/* <FormControl.Feedback type="invalid"></FormControl.Feedback> */}
             </Form.Group>
           </Form>
           <Button color="primary" onClick={this.onLoginClick}>Login</Button>
@@ -70,4 +75,15 @@ class Login extends Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, {
+  login
+})(withRouter(Login));
