@@ -18,6 +18,7 @@ from django.urls import path
 
 # from ..apps.accounts.urls import accounts_urlpatterns
 from apps.accounts.urls import accounts_urlpatterns
+from apps.notes.urls import notes_urlpatterns
 
 
 urlpatterns = [
@@ -26,3 +27,5 @@ urlpatterns = [
 
 # add URLs for authentication
 urlpatterns += accounts_urlpatterns
+# notes URLs
+urlpatterns += notes_urlpatterns

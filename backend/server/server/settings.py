@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     # Own apps
-    'apps.accounts'
+    'apps.accounts',
+    'apps.notes'
 ]
 
 MIDDLEWARE = [
